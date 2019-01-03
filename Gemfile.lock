@@ -1,0 +1,26 @@
+PATH
+  remote: .
+  specs:
+    active_cookies (0.1.0)
+      request_store (~> 1.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    minitest (5.11.3)
+    rack (2.0.6)
+    rake (10.5.0)
+    request_store (1.4.1)
+      rack (>= 1.4)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  active_cookies!
+  bundler (~> 1.17)
+  minitest (~> 5.0)
+  rake (~> 10.0)
+
+BUNDLED WITH
+   1.17.0
