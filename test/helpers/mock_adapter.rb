@@ -7,6 +7,7 @@ module ActiveCookies
     end
 
     def cookie_jar
+      puts "cookie_jar!"
       @cookie_jar ||= MockCookieJar.new
     end
 
