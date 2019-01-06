@@ -35,7 +35,7 @@ module ActiveCookies
         attributes = self.class.instance_variable_get(:@attrs_on_cookies)
         controller_ref = controller
         attributes.each do |attribute|
-          controller_ref.cookie_jar[cookie_key(attribute)] = a.send(attribute)
+          controller_ref.cookie_jar[cookie_key(attribute)] = send(attribute)
         end
       end
 
