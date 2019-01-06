@@ -8,7 +8,7 @@ module ActiveCookies
     end
 
     def cookie_jar
-      controller.cookies
+      controller.send(:cookies).signed
     end
 
     def self.included(klass)
