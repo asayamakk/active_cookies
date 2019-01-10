@@ -28,6 +28,15 @@ module ActiveCookies
         new(attribute_hash).tap(&:save)
       end
 
+      def find
+        controller_ref = controller
+        this = new
+        @attrs_on_cookies.each do |attribute|
+          this.send("#{attribute}=", controller_ref.cookie_jar[cookie_key(attribute)])
+        end
+        this
+      end
+
     end
 
     module InstanceMethods
