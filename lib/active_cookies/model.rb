@@ -25,7 +25,7 @@ module ActiveCookies
       end
 
       def create(attribute_hash)
-        new(attribute_hash).save
+        new(attribute_hash).tap(&:save)
       end
 
     end
@@ -36,6 +36,14 @@ module ActiveCookies
         controller_ref = controller
         attributes.each do |attribute|
           controller_ref.cookie_jar[cookie_key(attribute)] = send(attribute)
+        end
+      end
+
+      def destroy
+        attributes = self.class.instance_variable_get(:@attrs_on_cookies)
+        controller_ref = controller
+        attributes.each do |attribute|
+          controller_ref.cookie_jar.delete cookie_key(attribute)
         end
       end
 
