@@ -37,6 +37,10 @@ module ActiveCookies
         this
       end
 
+      def find_or_initialize
+       find || new
+      end
+
     end
 
     module InstanceMethods
