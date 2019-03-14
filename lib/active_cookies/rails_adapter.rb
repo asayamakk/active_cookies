@@ -11,16 +11,20 @@ module ActiveCookies
       controller.send(:cookies).signed
     end
 
+
+  end
+
+  module RailsInitializer
     def self.included(klass)
-      klass.prepend_before_action :set_controller
+      klass.prepend_before_action :initialize_active_cookies
     end
 
     private
 
-    def set_controller
-      ActiveCookies::Base.controller = new(self)
+    def initialize_active_cookies
+      ActiveCookies::Base.controller = RailsAdapter.new(self)
     end
   end
 end
 
-ApplicationController.send(:include, ActiveCookies::RailsAdapter)
+::ActionController::Base.send(:include, ActiveCookies::RailsInitializer)
